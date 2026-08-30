@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iceywing"
+version = "0.4.0a24"
+description = "Environment + Pop Flow orchestration for local projects and AI-generated code changes."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "AGPL-3.0-or-later" }
+dependencies = ["psutil>=7.0"]
+
+[project.scripts]
+iceywing = "iceywing.cli:main"
+iw = "iceywing.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

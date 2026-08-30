@@ -1,0 +1,22 @@
+[project]
+name = "MyProject"
+
+[environment]
+runtimes = ["node"]
+isolated = true
+
+[tasks]
+setup = "just setup"
+run = "just run"
+verify = "just verify"
+doctor = "just doctor"
+clean = "just clean"
+
+[git]
+protected_branches = ["main", "master"]
+allowed_branches = ["feat/*", "fix/*", "docs/*"]
+
+[pop]
+delete_patch_after_success = true
+push_default = false
+verify_baseline = false

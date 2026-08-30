@@ -1,0 +1,31 @@
+[project]
+name = "NeuroScape2.0-Cirno"
+
+[environment]
+runtimes = ["node", "python"]
+isolated = true
+
+[tasks]
+setup = "just setup"
+run = "just run"
+verify = "just verify"
+doctor = "just doctor"
+clean = "just clean"
+
+[git]
+protected_branches = [
+  "main",
+  "calibration-single-guided-baseline"
+]
+
+allowed_branches = [
+  "research-v1",
+  "feat/*",
+  "fix/*",
+  "docs/*"
+]
+
+[pop]
+delete_patch_after_success = true
+push_default = false
+verify_baseline = false
