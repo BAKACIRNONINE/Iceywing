@@ -299,7 +299,7 @@ def _build_artifacts(root: Path, identity: ReleaseIdentity) -> ReleaseArtifacts:
         source_zip.unlink()
 
     run_logged(
-        [sys.executable, "-m", "pip", "wheel", ".", "--no-deps", "--no-build-isolation", "--wheel-dir", str(dist)],
+        [sys.executable, "-m", "pip", "wheel", ".", "--no-deps", "--wheel-dir", str(dist)],
         cwd=root,
         label="Build wheel",
         log_prefix="release-build",
@@ -444,7 +444,7 @@ def publish(
     if branch == "(detached)":
         raise IceywingError("Cannot release from detached HEAD.")
 
-    print(f"* Release · {identity.title}\n")
+    print(f"* Release 路 {identity.title}\n")
 
     if dry_run:
         dirty = not repo.clean()
@@ -465,7 +465,7 @@ def publish(
     print(format_summary(verify_result, mark=concise_mark("ok")))
 
     artifacts = _build_artifacts(repo.root, identity)
-    print(f"{concise_mark('ok')} Build    {artifacts.source_zip.name} · {artifacts.wheel.name}")
+    print(f"{concise_mark('ok')} Build    {artifacts.source_zip.name} 路 {artifacts.wheel.name}")
 
     _push_head(repo)
     print(f"{concise_mark('ok')} Push     origin/{branch}")
@@ -475,7 +475,7 @@ def publish(
 
     token = _github_token_or_error()
     release = _create_or_get_release(repo_slug, identity, head=repo.head(), token=token)
-    print(f"{concise_mark('ok')} Release  GitHub · {'pre-release' if identity.preview_number is not None else 'published'}")
+    print(f"{concise_mark('ok')} Release  GitHub 路 {'pre-release' if identity.preview_number is not None else 'published'}")
 
     _upload_asset(repo_slug, release, artifacts.source_zip, token)
     print(f"{concise_mark('ok')} Upload   {artifacts.source_zip.name}")
