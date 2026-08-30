@@ -1,0 +1,17 @@
+setup:
+    echo "Define project setup"
+
+run:
+    echo "Define project run"
+
+test:
+    echo "Define project tests"
+
+verify:
+    just test
+
+doctor:
+    just --version
+
+clean:
+    echo "Define safe generated-file cleanup"

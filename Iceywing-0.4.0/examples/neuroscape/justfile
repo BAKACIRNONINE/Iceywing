@@ -1,0 +1,34 @@
+# Starter only. Check the actual repository scripts before committing this file.
+
+setup:
+    npm install
+
+doctor:
+    node --version
+    npm --version
+    just --version
+
+typecheck:
+    npm run typecheck
+
+test:
+    npm test
+
+lint:
+    npm run lint
+
+build:
+    npm run build
+
+verify:
+    just typecheck
+    just test
+    just lint
+    just build
+
+run:
+    npm run dev
+
+clean:
+    echo "Define NeuroScape's safe existing clean command before enabling."
+    exit 1

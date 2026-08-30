@@ -1,0 +1,16 @@
+format = "icepatch-v1"
+id = "project-change-id"
+
+[project]
+name = "MyProject"
+
+[base]
+branch = "feat/example"
+commit = "0123456789abcdef"
+
+[change]
+summary = "Describe the change."
+commit_message = "feat: describe the change"
+
+[cleanup]
+delete_package_after_success = true
