@@ -2,12 +2,10 @@ install:
     python -m pip install -e .
 
 test:
-    python -m unittest discover -s tests -v
-
+    python -m pytest
 verify:
-    python -m compileall -q src
+    python -m compileall -q src tests
     just test
-
 doctor:
     python --version
     git --version

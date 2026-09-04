@@ -19,9 +19,9 @@ def _force_dynamic_progress(monkeypatch) -> None:
 
 
 def test_preview23_version_and_no_new_ui_dependency():
-    assert iceywing.__version__ == "0.4.0"
+    assert iceywing.__version__ == "0.4.1"
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
-    assert 'version = "0.4.0"' in pyproject
+    assert 'version = "0.4.1"' in pyproject
     assert 'dependencies = ["psutil>=7.0"]' in pyproject
     assert "rich" not in pyproject.lower()
     assert "tqdm" not in pyproject.lower()

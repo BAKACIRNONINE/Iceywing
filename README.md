@@ -141,3 +141,21 @@ project.pop_push()
 ## License
 
 AGPL-3.0-or-later
+
+<!-- ICEYWING-REPRODUCIBILITY START -->
+## Engineering reproducibility
+
+For clean setup and validation, see:
+
+- `docs/reproducibility.md`
+- `docs/recovery-migration.md`
+
+Recommended local verification:
+
+```bash
+python -m pip install -e ".[test]"
+just doctor
+just test
+just verify
+```
+<!-- ICEYWING-REPRODUCIBILITY END -->

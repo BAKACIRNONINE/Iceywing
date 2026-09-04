@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_preview22_version_and_installer_postconditions():
-    assert iceywing.__version__ == "0.4.0"
-    assert 'version = "0.4.0"' in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert iceywing.__version__ == "0.4.1"
+    assert 'version = "0.4.1"' in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
 
     source = (ROOT / "bootstrap.ps1").read_text(encoding="utf-8")
     assert "$process.WaitForExit()" in source

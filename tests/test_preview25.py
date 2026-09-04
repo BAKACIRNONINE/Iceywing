@@ -20,8 +20,8 @@ def _write_pyproject(root: Path, version: str = "0.4.0a26") -> None:
 
 
 def test_preview25_version_release_notes_and_cli():
-    assert iceywing.__version__ == "0.4.0"
-    assert 'version = "0.4.0"' in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert iceywing.__version__ == "0.4.1"
+    assert 'version = "0.4.1"' in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert (ROOT / "docs" / "RELEASE_NOTES_0.4-preview26.md").exists()
 
     args = parser().parse_args(["release", "preview", "--dry-run"])
