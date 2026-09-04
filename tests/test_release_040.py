@@ -11,8 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_official_version_and_release_notes():
-    assert iceywing.__version__ == "0.4.0"
-    assert 'version = "0.4.0"' in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert iceywing.__version__ == "0.4.1"
+    assert 'version = "0.4.1"' in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert (ROOT / "docs" / "RELEASE_NOTES_0.4.0.md").exists()
 
 
@@ -72,9 +72,9 @@ def test_release_body_starts_with_user_facing_summary(tmp_path: Path):
         package_version="0.4.0",
         display_version="0.4.0",
         preview_number=None,
-        tag="v0.4.0",
-        title="Iceywing 0.4.0",
-        archive_name="Iceywing-0.4.0.zip",
+        tag="v0.4.1",
+        title="Iceywing 0.4.1",
+        archive_name="Iceywing-0.4.1.zip",
         notes_path=notes,
     )
 

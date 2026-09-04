@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_preview17_version():
-    assert iceywing.__version__ == "0.4.0"
+    assert iceywing.__version__ == "0.4.1"
 
 
 def test_selftest_uses_runtime_api_instead_of_recursive_run_cli():

@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_preview18_version_and_psutil_dependency():
-    assert iceywing.__version__ == "0.4.0"
+    assert iceywing.__version__ == "0.4.1"
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert 'psutil>=7.0' in pyproject
 

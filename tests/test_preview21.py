@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_preview21_version():
-    assert iceywing.__version__ == "0.4.0"
-    assert 'version = "0.4.0"' in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert iceywing.__version__ == "0.4.1"
+    assert 'version = "0.4.1"' in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
 
 
 def test_windows_setup_never_opens_an_elevated_window():

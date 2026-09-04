@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_preview19_version():
-    assert iceywing.__version__ == "0.4.0"
+    assert iceywing.__version__ == "0.4.1"
 
 
 def test_cleanup_is_not_a_self_test_stage():

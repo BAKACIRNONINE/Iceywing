@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_preview13_version():
-    assert iceywing.__version__ == "0.4.0"
-    assert "0.4.0" in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert iceywing.__version__ == "0.4.1"
+    assert "0.4.1" in (ROOT / "pyproject.toml").read_text(encoding="utf-8")
 
 
 def test_top_level_run_accepts_project_path(tmp_path: Path):

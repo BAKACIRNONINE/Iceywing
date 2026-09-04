@@ -69,6 +69,8 @@ def prepare_command(args: Sequence[str]) -> list[str]:
 
 def _child_env() -> dict[str, str]:
     child_env = os.environ.copy()
+    child_env.setdefault("PYTHONUTF8", "1")
+    child_env.setdefault("PYTHONIOENCODING", "utf-8")
     child_env.setdefault("NO_COLOR", "1")
     child_env.setdefault("CLICOLOR", "0")
     child_env.setdefault("FORCE_COLOR", "0")
