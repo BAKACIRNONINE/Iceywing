@@ -351,6 +351,13 @@ def run_live_logged(
 
 def shell_command(command: str) -> list[str]:
     if os.name == "nt":
+        # Windows needs the call operator when the command starts with a quoted executable path.
+        # Example: "C:\\path\\python.exe" -c "..." must run as:
+        #   & "C:\\path\\python.exe" -c "..."
+        # Without "&", PowerShell treats the quoted executable as a string expression.
+        stripped = command.lstrip()
+        if stripped.startswith(('"', "'")):
+            command = command[: len(command) - len(stripped)] + "& " + stripped
         return ["powershell", "-NoProfile", "-Command", command]
     return ["sh", "-lc", command]
 
@@ -477,10 +484,22 @@ def _enable_windows_vt() -> bool:
 
 
 def _progress_color_enabled() -> bool:
+    color_preference = os.environ.get("ICEYWING_COLOR", "auto").strip().lower()
+    if color_preference in {"off", "0", "false", "no", "never"}:
+        return False
+    if color_preference in {"on", "1", "true", "yes", "always", "force"}:
+        return True
+
+    progress_preference = os.environ.get("ICEYWING_PROGRESS", "auto").strip().lower()
+    if progress_preference in {"dynamic", "on", "1", "true"}:
+        return "NO_COLOR" not in os.environ and os.environ.get("CLICOLOR") != "0"
+
     if "NO_COLOR" in os.environ or os.environ.get("CLICOLOR") == "0":
         return False
+    force_color = os.environ.get("FORCE_COLOR", "").strip().lower()
+    if force_color and force_color not in {"0", "false", "no"}:
+        return True
     return _enable_windows_vt()
-
 
 def _render_dynamic_progress(
     state: _LiveProgress,

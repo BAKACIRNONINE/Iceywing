@@ -19,6 +19,7 @@ from .util import (
     is_verbose,
     progress as _render_progress,
     progress_note,
+    tick_progress,
     run_logged,
     say,
 )
@@ -362,6 +363,8 @@ def resume(config: ProjectConfig) -> None:
         verify_line = f"{concise_mark('ok')} Verify  checkpoint reused"
     else:
         begin_activity("Verify project")
+        tick_progress()
+        tick_progress()
         try:
             verify_result = environment.verify(config, quiet=True)
         except KeyboardInterrupt:
@@ -399,7 +402,14 @@ def resume(config: ProjectConfig) -> None:
         verify_line = _verify_summary_line(verify_result)
 
     message = item.get("commit_message") or f"chore: apply {item.get('patch_id', 'change')}"
-    sha = repo.commit(message)
+    progress(2, 2, "[....]", "Commit change")
+    tick_progress()
+    try:
+        sha = repo.commit(message)
+    except Exception:
+        progress(2, 2, "[FAIL]", "Commit change")
+        raise
+    progress(2, 2, "[OK]", "Commit change")
     append({
         "operation_id": item["operation_id"],
         "event": "committed",

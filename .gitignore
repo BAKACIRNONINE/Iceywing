@@ -11,3 +11,5 @@ __pycache__/
 .iceywing/
 .coverage
 .DS_Store
+# Pytest local temp base
+.pytest-tmp/
